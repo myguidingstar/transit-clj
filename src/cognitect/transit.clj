@@ -158,7 +158,7 @@
        (let [handler-map (if (instance? HandlerMapContainer handlers)
                            (handler-map handlers)
                            (merge default-write-handlers handlers))]
-         (Writer. (TransitFactory/writer (transit-format type) out handler-map default-handler
+         (->Writer (TransitFactory/writer (transit-format type) out handler-map default-handler
                     (when transform
                       (reify Function
                         (apply [_ x]
